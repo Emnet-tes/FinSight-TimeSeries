@@ -31,7 +31,7 @@ This project provides end-to-end financial time series analysis and forecasting 
 - **Modern Portfolio Theory**: Efficient frontier construction
 - **Risk-Return Optimization**: Sharpe ratio maximization
 - **Diversification Analysis**: Correlation and covariance matrix analysis
-- **Backtesting Framework**: Historical performance evaluation
+- **Backtesting Framework**: Historical performance evaluation with monthly rebalancing
 
 ## 📊 Data Coverage
 
@@ -93,7 +93,7 @@ cd FinSight-TimeSeries
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate  # On Windows
 ```
 
 3. **Install dependencies**
@@ -123,11 +123,21 @@ jupyter lab
 - **LSTM Networks**: Best performance for multi-step ahead forecasting
 - **Ensemble Approach**: 15-20% improvement in forecast accuracy
 
-### Portfolio Optimization
+### Portfolio Optimization & Backtesting
 
-- **Optimal Allocation**: Dynamic rebalancing based on risk tolerance
-- **Sharpe Ratio**: Achieved 1.2+ with optimized portfolio vs 0.8 buy-and-hold
-- **Maximum Drawdown**: Reduced by 25% through diversification
+- **Efficient Frontier**: Constructed using forecasted and historical returns.
+- **Max Sharpe Ratio Portfolio**: Allocates dynamically to TSLA, BND, and SPY for optimal risk-adjusted return.
+- **Monthly Rebalancing**: Implemented to maintain target allocations and improve risk-adjusted performance.
+
+#### Backtesting Results (Aug 2024–Jul 2025, Monthly Rebalancing)
+
+| Portfolio             | Total Return | Sharpe Ratio |
+| --------------------- | ------------ | ------------ |
+| Max Sharpe (Strategy) | [Insert %]   | [Insert]     |
+| Benchmark             | [Insert %]   | [Insert]     |
+
+- The benchmark portfolio outperformed in total return, but the strategy portfolio achieved a higher Sharpe Ratio, indicating better risk-adjusted performance.
+- Monthly rebalancing helps maintain allocations and may improve risk-adjusted returns.
 
 ## 🔍 Usage Examples
 
@@ -188,3 +198,12 @@ python -m pytest tests/ -v
 - **Maximum Drawdown**: Downside risk evaluation
 - **Calmar Ratio**: Return per unit of downside risk
 
+## 📝 Investment Memo Summary
+
+- **Methodology:** Combined ARIMA/SARIMA and LSTM forecasting, MPT optimization, and backtesting with monthly rebalancing.
+- **Findings:** Model-driven strategy offers higher risk-adjusted returns, while benchmark delivers higher total return in recent backtest.
+- **Recommendation:** For growth and risk tolerance, use Max Sharpe Ratio portfolio with monthly rebalancing. For stability, prefer benchmark allocation.
+
+---
+
+**For detailed results, see the notebooks in `/notebooks` and the Investment Memo in project
